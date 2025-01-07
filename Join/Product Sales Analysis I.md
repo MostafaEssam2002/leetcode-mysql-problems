@@ -64,7 +64,7 @@ JOIN
 ON 
     Sales.product_id = Product.product_id;
 ---
-##Solution 2: Using JOIN Without Explicit Syntax
+## Solution 2: Using JOIN Without Explicit Syntax
 ```sql
 SELECT 
     product_name, 
