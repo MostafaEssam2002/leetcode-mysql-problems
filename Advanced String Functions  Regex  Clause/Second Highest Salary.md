@@ -54,6 +54,5 @@ SELECT IFNULL(
      WHERE employee.salary < (SELECT MAX(employee.salary) FROM employee)),
     NULL) AS SecondHighestSalary;
 
-### Another Solution:
-```sql
+-- Another Solution
 select max(salary) as SecondHighestSalary from Employee where salary not in (select max(salary) from Employee)
