@@ -70,4 +70,23 @@ Return the result table in any order.
 - User 2 made 2 requests, one confirmed and one timed out. The confirmation rate is 1 / 2 = 0.5.
 **Solution**
 ```sql
-SELECT signups.user_id ,round(ifnull(SUM(CASE WHEN (confirmations.action='confirmed') THEN 1 END )/COUNT(confirmations.action),0),2) AS confirmation_rate FROM signups LEFT JOIN confirmations ON signups.user_id=confirmations.user_id GROUP BY signups.user_id ORDER BY confirmation_rate;
+SELECT 
+  signups.user_id, 
+  round(
+    ifnull(
+      SUM(
+        CASE WHEN (
+          confirmations.action = 'confirmed'
+        ) THEN 1 END
+      )/ COUNT(confirmations.action), 
+      0
+    ), 
+    2
+  ) AS confirmation_rate 
+FROM 
+  signups 
+  LEFT JOIN confirmations ON signups.user_id = confirmations.user_id 
+GROUP BY 
+  signups.user_id 
+ORDER BY 
+  confirmation_rate;
