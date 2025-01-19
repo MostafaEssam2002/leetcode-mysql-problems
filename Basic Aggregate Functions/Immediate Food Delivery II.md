@@ -59,4 +59,23 @@ The result format should follow the example below.
 ## Solution
 
 ```sql
-SELECT round(100-(sum(CASE WHEN delivery.order_date != delivery.customer_pref_delivery_date THEN 1 else 0 END)/count(*))*100,2) as immediate_percentage from delivery WHERE order_date = (SELECT MIN(order_date) FROM delivery d1 WHERE d1.customer_id=delivery.customer_id ) 
+SELECT 
+  round(
+    100 -(
+      sum(
+        CASE WHEN delivery.order_date != delivery.customer_pref_delivery_date THEN 1 else 0 END
+      )/ count(*)
+    )* 100, 
+    2
+  ) as immediate_percentage 
+from 
+  delivery 
+WHERE 
+  order_date = (
+    SELECT 
+      MIN(order_date) 
+    FROM 
+      delivery d1 
+    WHERE 
+      d1.customer_id = delivery.customer_id
+  )
