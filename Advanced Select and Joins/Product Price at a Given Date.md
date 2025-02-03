@@ -46,18 +46,18 @@ Products table:
 ## Solution:
 
 ```sql
+WITH RankedPrices AS (
+    SELECT 
+        product_id, 
+        new_price, 
+        change_date,
+        RANK() OVER (PARTITION BY product_id ORDER BY change_date DESC) AS rnk
+    FROM Products
+    WHERE change_date <= '2019-08-16'
+)
 SELECT 
-    all_products.product_id,
-    COALESCE(
-        (SELECT p.new_price
-         FROM products p
-         WHERE p.product_id = all_products.product_id 
-           AND p.change_date <= '2019-08-16'
-         ORDER BY p.change_date DESC
-         LIMIT 1), 10) AS price
-FROM 
-    (SELECT DISTINCT product_id FROM products
-     UNION 
-     SELECT 3 AS product_id) all_products;
-
----
+    p.product_id, 
+    COALESCE(rp.new_price, 10) AS price
+FROM (SELECT DISTINCT product_id FROM Products) p
+LEFT JOIN RankedPrices rp
+ON p.product_id = rp.product_id AND rp.rnk = 1;
