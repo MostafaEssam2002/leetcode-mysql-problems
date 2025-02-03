@@ -59,3 +59,5 @@ FROM
     (SELECT DISTINCT product_id FROM products
      UNION 
      SELECT 3 AS product_id) all_products;
+
+---
