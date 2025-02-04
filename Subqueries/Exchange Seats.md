@@ -1,12 +1,9 @@
 ## Table: Seat
 
- 
 | Column Name | Type    |
 |-------------|---------|
 | id          | int     |
 | student     | varchar |
-
-```
 
 `id` is the primary key (unique value) column for this table.
 Each row of this table indicates the name and the ID of a student.
@@ -26,30 +23,24 @@ Return the result table ordered by `id` in ascending order.
 
 ### Input:
 **Seat table:**
-```text
-+----+---------+
+
 | id | student |
-+----+---------+
+|----|---------|
 | 1  | Abbot   |
 | 2  | Doris   |
 | 3  | Emerson |
 | 4  | Green   |
 | 5  | Jeames  |
-+----+---------+
-```
 
 ### Output:
-```text
-+----+---------+
+
 | id | student |
-+----+---------+
+|----|---------|
 | 1  | Doris   |
 | 2  | Abbot   |
 | 3  | Green   |
 | 4  | Emerson |
 | 5  | Jeames  |
-+----+---------+
-```
 
 ### Explanation:
 - Note that if the number of students is odd, there is no need to change the last one's seat.
@@ -68,3 +59,4 @@ SELECT
     student
 FROM Seat
 ORDER BY id;
+```
