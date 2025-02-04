@@ -5,7 +5,7 @@
 |-------------|---------|
 | id          | int     |
 | student     | varchar |
-+-------------+---------+
+
 ```
 
 `id` is the primary key (unique value) column for this table.
