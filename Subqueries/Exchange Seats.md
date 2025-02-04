@@ -1,7 +1,7 @@
 ## Table: Seat
 
 ```
-text| Column Name | Type    |
+| Column Name | Type    |
 |-------------|---------|
 | id          | int     |
 | student     | varchar |
