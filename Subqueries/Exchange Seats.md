@@ -1,6 +1,6 @@
 ## Table: Seat
 
-```
+ 
 | Column Name | Type    |
 |-------------|---------|
 | id          | int     |
