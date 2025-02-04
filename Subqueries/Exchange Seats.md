@@ -1,9 +1,8 @@
 ## Table: Seat
 
-```text
-+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
+```
+text| Column Name | Type    |
+|-------------|---------|
 | id          | int     |
 | student     | varchar |
 +-------------+---------+
